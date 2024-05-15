@@ -50,4 +50,12 @@ jobs:
         push: true
         tags: |
           zakaria515/app-frontend:latest
-          zakaria515/app-frontend:${{ github.sha }}          
+          zakaria515/app-frontend:${{ github.sha }} 
+    # Exécution de Docker Compose pour démarrer les services
+    - name: Run Docker Compose
+      run: docker-compose -f docker-compose.yml up -d
+
+    # Arrêt et nettoyage des services avec Docker Compose
+    - name: Shutdown Docker Compose
+      if: always()
+      run: docker-compose -f docker-compose.yml down          
