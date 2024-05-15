@@ -55,7 +55,4 @@ jobs:
     - name: Run Docker Compose
       run: docker-compose -f docker-compose.yml up -d
 
-    # Arrêt et nettoyage des services avec Docker Compose
-    - name: Shutdown Docker Compose
-      if: always()
-      run: docker-compose -f docker-compose.yml down          
+              
