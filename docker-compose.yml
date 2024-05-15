@@ -8,3 +8,10 @@ services:
     image: zakaria515/app-frontend:latest
     ports:
       - "3000:3000"
+  web:
+    build: .
+    image: zakaria515/compose:latest
+    volumes:
+      - type: bind
+        source: ./data
+        target: /var/www/html
