@@ -52,7 +52,12 @@ jobs:
           zakaria515/app-frontend:latest
           zakaria515/app-frontend:${{ github.sha }} 
     # Exécution de Docker Compose pour démarrer les services
-    - name: Run Docker Compose
-      run: docker-compose -f docker-compose.yml up --build  
+    - name: Build and push with Docker Compose
+      run: |
+        docker-compose -f docker-compose.yml build
+        docker-compose -f docker-compose.yml push
 
+    # Exécution de Docker Compose pour démarrer les services
+    - name: Run Docker Compose
+      run: docker-compose -f docker-compose.yml up -d 
               
