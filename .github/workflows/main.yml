@@ -51,5 +51,14 @@ jobs:
         tags: |
           zakaria515/app-frontend:latest
           zakaria515/app-frontend:${{ github.sha }} 
-    
+    - name: Install kubectl
+      uses: azure/aks-set-context@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          cluster-name: clusterReservation
+          resource-group: mygroup
+
+    - name: Apply Kubernetes manifest
+      run: |
+          kubectl apply -f app.yml
               
